@@ -234,6 +234,11 @@ var Popover = React.createClass({
       }
     }
   },
+  componentDidMount() {
+    if (this.props.isVisible) {
+      this.setState({contentSize: {}, isAwaitingShow: true});
+    }
+  },
   _startAnimation({show}) {
     var handler = this.props.startCustomAnimation || this._startDefaultAnimation;
     handler({show, doneCallback: () => this.setState({isTransitioning: false})});
